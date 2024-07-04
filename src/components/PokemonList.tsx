@@ -35,7 +35,7 @@ const PokemonList: React.FC = () => {
         {pokemonData.map((pokemon) => (
           <li
             key={pokemon.id}
-            className="flex w-40 h-50 border border-black justify-center items-center rounded-lg hover:bg-sky-500 p-2"
+            className="flex w-40 h-50 justify-center items-center rounded-lg hover:bg-sky-500 p-2 bg-white"
           >
             <Link href={`/pokemons/${pokemon.id}`}>
               <div>

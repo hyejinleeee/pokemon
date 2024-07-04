@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <>
       <html lang="en">
-        <body className="font-HakgyoansimWoojuR">
+        <body className="font-HakgyoansimWoojuR bg-pixel-img bg-cover bg-center bg-no-repeat bg-fixed">
           <Link href="/">
             <div
               className={`text-5xl font-semibold m-10 ${pixelify.className}`}

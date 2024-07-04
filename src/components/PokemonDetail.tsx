@@ -25,7 +25,7 @@ const PokemonDetail: React.FC<PokemonDetailProps> = ({ pokemon }) => {
     .join(", ");
 
   return (
-    <div className="flex flex-col border-stone-500 border-2 rounded-lg justify-center items-center  w-96 m-auto mb-20 p-8">
+    <div className="flex flex-col bg-white border-2 rounded-lg justify-center items-center  w-96 m-auto mb-20 p-8">
       <div className="p-7">
         <p className={`text-xl font-semibold ${pixelify.className}`}>
           No. {pokemon.id} - {pokemon.korean_name}
