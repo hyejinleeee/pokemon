@@ -6,32 +6,35 @@ import Image from "next/image";
 import Link from "next/link";
 import { type Pokemon } from "@/types/pokemon";
 import { Pixelify_Sans } from "next/font/google";
+import Pagination from "./Pagination";
 
 const pixelify = Pixelify_Sans({ subsets: ["latin"] });
 
 const PokemonList: React.FC = () => {
   const [pokemonData, setPokemonData] = useState<Pokemon[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/api/pokemons");
-        console.log(response.data[0]);
-        setPokemonData(response.data);
+        const response = await axios.get(`/api/pokemons?page=${page}`);
+        setPokemonData(response.data.data);
+        setTotalPages(response.data.totalPages);
       } catch (err) {
         setError("엔지엔지");
       }
     };
 
     fetchData();
-  }, []);
+  }, [page]);
 
   if (error) return <div>{error}</div>;
 
   return (
     <div>
-      <ul className="grid grid-cols-6 gap-6 m-9  ">
+      <ul className="grid grid-cols-6 gap-6 m-9">
         {pokemonData.map((pokemon) => (
           <li
             key={pokemon.id}
@@ -47,11 +50,12 @@ const PokemonList: React.FC = () => {
                 />
               </div>
               <p className="block">{pokemon.korean_name}</p>
-              <p className={pixelify.className}> 도감번호: {pokemon.id}</p>
+              <p className={pixelify.className}>도감번호: {pokemon.id}</p>
             </Link>
           </li>
         ))}
       </ul>
+      <Pagination totalPages={totalPages} page={page} setPage={setPage} />
     </div>
   );
 };

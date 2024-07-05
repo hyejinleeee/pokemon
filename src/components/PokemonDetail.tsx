@@ -40,14 +40,14 @@ const PokemonDetail: React.FC<PokemonDetailProps> = ({ pokemon }) => {
         />
       </div>
 
-      <p>키: {pokemon.height}cm</p>
-      <p>몸무게: {pokemon.weight}kg</p>
+      <p>키: {pokemon.height * 10 * 0.01}m</p>
+      <p>몸무게: {pokemon.weight * 0.1}kg</p>
       <p>타입: {types}</p>
       <p>능력: {abilities}</p>
       <p>기술: {moves}</p>
 
       <Link href="/">
-        <button className="bg-slate-300">뒤로가기</button>
+        <button className="bg-slate-300 mt-5">뒤로가기</button>
       </Link>
     </div>
   );
